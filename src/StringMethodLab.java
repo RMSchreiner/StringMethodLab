@@ -1,4 +1,3 @@
-import day1_basics.Sting;
 
 public class StringMethodLab {
 
@@ -10,7 +9,8 @@ public class StringMethodLab {
 		firstThingsFirst("Richard","King");
 		reverse("saippuakivikauppias"); //Finnish soapstone dealer (palindrome)
 		soLong("Rhinoceros","Hippopotamus");
-		//afterMath("Is there any Math in this?");
+		afterMath("Is there any math in this?");
+		afterMath("Is there any Math in this?");
 		letterize("Java");
 	}
 
@@ -38,22 +38,22 @@ public class StringMethodLab {
 		}
 		else {
 			System.out.println("These both are the same word.");
-			}
 		}
-		
+	}
+
 	public static void reverse(String s) {
 		StringBuilder str = new StringBuilder(s);
 		System.out.println("string = " + str.reverse());
-		}
+	}
 	/*Following are some interesting facts about String and StringBuffer classes :
 	 *1. Objects of String are immutable.
 	 * 2. String class in Java does not have reverse() method, however StringBuilder class has built in reverse() method.
 	 * 3. StringBuilder class do not have toCharArray() method, while String class does have toCharArray() method.
 	 */
-	
+
 	public static void soLong(String s1, String s2) {
 		int whoseLonger = s1.length() - s2.length();
-		
+
 		if (whoseLonger < 0) {            
 			System.out.println(s2);  
 		}
@@ -62,25 +62,28 @@ public class StringMethodLab {
 		}
 		else {
 			System.out.println(s1 + " " + s2);
-			}	
+		}	
+		// why did I need to add (" math")+1 so that I would not get the -1 out of range error when using a word other than math?
 	}
-	
-	/*        //"Is there any Math in this?" ERROR: String index out of range: -1 
-	        // Has something to do with the indexing function on String edited
 	public static void afterMath(String phrase) {
-		String edited = phrase.substring(phrase.indexOf("math"), phrase.length());
-		int intEdited = edited.compareTo(phrase);
-		if (intEdited > 0){
+		String edited = phrase.substring(phrase.indexOf(" math")+1, phrase.length());
+		int intEdited = (phrase.length()-edited.length());
+		if (intEdited > 1) {
 			System.out.println(edited);
 		}
 		else {System.out.println("dud");}
-	}*/
-	
-    public static void letterize(String word) { 
-    	   
-    		for (int i = 0; i < word.length(); i++) {
-    	         char c =word.charAt(i);
-    	         System.out.println(c);
-    		}		
-    }	
+	}
+
+	public static void letterize(String word) { 
+
+		for (int i = 0; i < word.length(); i++) {
+			char c =word.charAt(i);
+			System.out.println(c);
+		}		
+	}	
+	/*public static char letterize(char word){ 
+ 	   		for (int i = 0; i < word.length(); i++) {
+	         char c =word.charAt(i);
+	         System.out.println(c);
+		}*/
 }
